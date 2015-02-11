@@ -1,0 +1,36 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
+
+## Loading and preprocessing the data
+```{r}
+library("dplyr")
+activity <- read.csv("activity.csv", stringsAsFactors = FALSE)
+tblA <- tbl_df(activity)
+```
+
+
+## What is mean total number of steps taken per day?
+```{r}
+grDate <- group_by(tblA, date)
+stepsByDay <- summarise(grDate, mean(steps))
+#hist(stepsByDay)
+hist(stepsByDay$mean)
+#aggregate(cbind(steps) ~ date, data=activity, FUN=mean)
+
+```
+
+
+## What is the average daily activity pattern?
+
+
+
+## Imputing missing values
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?
